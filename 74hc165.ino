@@ -1,34 +1,50 @@
-#include "ShiftRegister.h";
+//#include "ShiftRegister.h";
+#include "DebouncedSwitch.h"
 
 int latchPin = 8;
 int clockPin = 10;
 int dataPin = 11;
 
-byte previousState[2];
-ShiftRegister shiftRegister(clockPin, latchPin, dataPin);
+int buttonPin = 2;
+
+//byte previousState[2];
+//ShiftRegister shiftRegister(clockPin, latchPin, dataPin);
+
+DebouncedSwitch button;
 
 void setup()
 {
+
+
+  button.Init(2);
+
   Serial.begin(9600);
+  //pinMode(buttonPin, INPUT);
 }
 
 void loop()
 {
-
-  byte data[2];
-  shiftRegister.shiftDataOut(data);
-
-  for (int i = 0; i < 2; i++) {
-    if ( previousState[i] != data[i])
-    {
-      Serial.println(data[i], BIN);
-      previousState[i] = data[i];
-      Serial.println("----");
-    }
-  }
-
+  button.Read();
+  Serial.println(button.state(), BIN);
   delay(10);
+  //Serial.println(digitalRead(buttonPin));
 
+  /*
+    byte data[2];
+    shiftRegister.shiftDataOut(data);
+
+    for (int i = 0; i < 2; i++) {
+      if ( previousState[i] != data[i])
+      {
+        Serial.println(data[i], BIN);
+        previousState[i] = data[i];
+        Serial.println("----");
+      }
+    }
+
+    delay(10);
+  */
+  // delay(10);
 }
 
 
