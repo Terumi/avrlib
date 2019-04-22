@@ -40,7 +40,7 @@ class RotaryEncoder {
 
       if  (rot_enc_table[prevNextCode_] ) {
         store_ <<= 4; // make space for the next data
-        store_ |= prevNextCode_; // "append" prevNextCode to store_. The appending happens only because store_ has now four 0 digits in the end.
+        store_ |= prevNextCode_; // "append" prevNextCode_ to store_. The appending happens only because store_ has now four 0 digits in the end.
 
         // if ((store_ & 0xfff) == 0x42b) return -1; // we need to find 0100 0010 1011
         // if ((store_ & 0xfff) == 0x817) return 1; // we need to find 1000 0001 0111
