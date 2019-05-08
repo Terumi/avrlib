@@ -7,7 +7,7 @@ class DebouncedSwitch {
 
     void Init(int pin) {
       _pin = pin;
-      pinMode(_pin, INPUT);
+      pinMode(_pin, INPUT_PULLUP);
       state_ = 0xff;
     }
 

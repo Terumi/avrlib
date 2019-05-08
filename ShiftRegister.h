@@ -6,20 +6,21 @@
 
 #ifndef ShiftRegister_h
 #define ShiftRegister_h
-#define NUMBER_OF_REGISTERS 2
+
 
 #include "Arduino.h"
 
 class ShiftRegister
 {
   public:
-    ShiftRegister(int clockPin, int latchPin, int dataPin);
+    ShiftRegister(int clockPin, int latchPin, int dataPin, int number_of_registers);
     shiftDataOut(byte *data);
   private:
     byte getPage();
     int _latchPin;
     int _clockPin;
     int _dataPin;
+    int _number_of_registers;
 };
 
 #endif
